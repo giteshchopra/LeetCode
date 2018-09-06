@@ -17,11 +17,11 @@ public class Permutation
 		String str = "ABC";
 		int n = str.length();
 		Permutation permutation = new Permutation();
-		permutation.permute(str,0, new StringBuilder(), new boolean[str.length()]);
+		permutation.permute(str,new StringBuilder(), new boolean[str.length()]);
 	}
 
 
-	public void permute(String str, int start, StringBuilder sb, boolean[] seen){
+	public void permute(String str, StringBuilder sb, boolean[] seen){
 	    if(sb.length() == str.length())
 	        System.out.println(sb.toString());
 	    for(int i = 0; i < str.length(); i++){
@@ -29,7 +29,7 @@ public class Permutation
 	            continue;
 	        sb.append(str.charAt(i));
 	        seen[i] = true;
-	        permute(str,i+1,sb,seen);
+	        permute(str,sb,seen);
 	        sb.deleteCharAt(sb.length()-1);
 	        seen[i] = false;
 	    }
